@@ -13,3 +13,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.movieCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: green;
+  
+}
+
+.movieCardtitle {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-left: 10px;
+}
