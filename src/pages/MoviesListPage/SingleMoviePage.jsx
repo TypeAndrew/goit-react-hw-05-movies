@@ -5,7 +5,6 @@ import { useParams, Link, Outlet } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Genres } from '../../components/Movies/Genres'
 import { BackLink } from '../../components/Movies/BackLink';
-
 import { Loader } from '../../components/Loader/Loader';
 
 export const SingleMoviePage = () => {
@@ -52,7 +51,7 @@ export const SingleMoviePage = () => {
             <p>overview:</p>
             <p>{movie.overview}</p>
             <p>genres:</p>
-              <Genres genres={movie.genres} />
+              <Genres data={movie.genres} />
           </div>
         </div>
         <div >

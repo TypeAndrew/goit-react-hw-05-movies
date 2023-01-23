@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 
-export const Genres = (genres) => {
+export const Genres = ({ data }) => {
 
      const [value, setValue] = useState("");
 
     useEffect(() => {
         let strGenres = "";
-        genres.genres.map((element) => {
+        data.map((element) => {
             strGenres += element.name + " ";
-            
+            return strGenres;   
         })
         setValue(strGenres);
-    })
+    },[value,data])
  
 
     return (
