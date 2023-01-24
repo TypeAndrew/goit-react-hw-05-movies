@@ -20,10 +20,10 @@ export const App = () => {
     
     <BrowserRouter basename='goit-react-hw-05-movies' >
       <>
-        <Header title={'Vieo cloud'}/>
+        <Header title={'Video cloud'}/>
         
         <nav>
-          <StyledLink to="/">Home</StyledLink>
+          <StyledLink to="/">Home  </StyledLink>
           <StyledLink to="/movies">Movies</StyledLink>
         </nav>
         

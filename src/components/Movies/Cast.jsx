@@ -7,7 +7,7 @@ import { getCasts } from '../../services/movies.services';
 import { Loader } from '../../components/Loader/Loader';
 import { STATUS } from '../../constants/status.constants';
 import { useParams } from 'react-router-dom';
-
+//import { useLocation } from "react-router-dom";
 
 export const Cast = () => {
 
@@ -15,7 +15,8 @@ export const Cast = () => {
 
   const [value, setValue] = useState(null);
   const [status, setStatus] = useState(STATUS.idle);
-
+  //const location = useLocation();
+ // const backLinkHref = location.state?.from ;
   
 
    useEffect(() => {

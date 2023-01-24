@@ -1,4 +1,4 @@
-//import axios from 'axios';
+import { useSearchParams } from "react-router-dom";
 import { useRef, useState } from 'react';
 import { MovieItem } from '../../components/Movies/MovieItem';
 //import { toast } from 'react-toastify';
@@ -8,7 +8,10 @@ import { searhMoviesByName } from '../../services/movies.services';
 export const SearchMovies = () => {
   const [video, setViedos] = useState(undefined);
   const search = useRef();
-  
+  const [searchParams, setSearchParams] = useSearchParams();
+  const name = searchParams.get("query");
+  //const search1 = useParams()
+
 
   const fetchData = async (value) => {
     //setStatus(STATUS.loading);
@@ -32,6 +35,7 @@ export const SearchMovies = () => {
       toast.error('Something went wrong!');
     });*/
 };
+   
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -40,7 +44,7 @@ export const SearchMovies = () => {
     getMovies(value);
 
   };
-
+  
  return (
       <>
       <form
@@ -52,8 +56,9 @@ export const SearchMovies = () => {
           type="text"
           className="form-control"
           placeholder="Type to search..."
-        
-            ref={search}
+          value={name}
+          onChange={e => setSearchParams({ name: e.target.value })}
+          ref={search}
                  />
 
         <button type="submit" className="btn btn-primary">

@@ -17,7 +17,7 @@ export const SingleMoviePage = () => {
   const [status, setStatus] = useState(STATUS.idle);
 
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? "/products";
+  const backLinkHref = location.state?.from ?? '/movies';
 
   useEffect(() => {
     
@@ -47,7 +47,7 @@ export const SingleMoviePage = () => {
     return <Loader />;
   }
 
-
+  
   return (
     movie && (
       <>
@@ -71,12 +71,12 @@ export const SingleMoviePage = () => {
         <div >
           <ul>
             <li>
-              <Link to="cast" className="btn btn-primary my-4">
+              <Link to="cast" className="btn btn-primary my-4" state={{ from: location.state?.from ?? '/movies' }}>
               cast
               </Link>
             </li>
             <li>
-              <Link to="reviews" className="btn btn-primary my-4">
+              <Link to="reviews" className="btn btn-primary my-4" state={{ from: location.state?.from ?? '/movies' }}>
               reviews
               </Link>
             </li>  
