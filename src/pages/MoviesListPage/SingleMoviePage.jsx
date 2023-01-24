@@ -43,7 +43,7 @@ export const SingleMoviePage = () => {
           src={'https://image.tmdb.org/t/p/original/'+movie.backdrop_path}
           alt={movie.title}
           className="img-fluid mb-4"
-          style={{ maxHeight: '600px', width: '100%', objectFit: 'cover' }}
+          style={{ maxHeight: '300px', width: '100%', objectFit: 'cover' }}
         />
           <div className={'movieCardtitle'}>
             <h1 className="mb-5">{movie.title}</h1>
@@ -55,13 +55,18 @@ export const SingleMoviePage = () => {
           </div>
         </div>
         <div >
-          <Link to="cast" className="btn btn-primary my-4">
-          cast
-          </Link>
-          <Link to="reviews" className="btn btn-primary my-4">
-          reviews
-        </Link>
-
+          <ul>
+            <li>
+              <Link to="cast" className="btn btn-primary my-4">
+              cast
+              </Link>
+            </li>
+            <li>
+              <Link to="reviews" className="btn btn-primary my-4">
+              reviews
+              </Link>
+            </li>  
+        </ul>
         </div>
       <Outlet />
       </>
