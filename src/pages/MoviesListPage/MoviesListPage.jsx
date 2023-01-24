@@ -9,12 +9,12 @@ import { getMovies } from '../../services/movies.services';
 export const MoviesListPage = ( ) => {
   const [movies, setMovies] = useState(null);
   const [status, setStatus] = useState(STATUS.idle);
-  const [search, setSearch] = useState('');
+  //const [search, setSearch] = useState('');
   
   const fetchData = async ({ page = 1, query = '' }) => {
     setStatus(STATUS.loading);
     try {
-      const data = await getMovies({ page, search: query });
+      const data = await getMovies('',query,'/movie/popular/');
       setMovies(data);
       setStatus(STATUS.success);
     } catch (error) {
@@ -23,10 +23,10 @@ export const MoviesListPage = ( ) => {
     }
   };
 
-  const handleSearch = event => {
-    setSearch(event.target.value);
+  //const handleSearch = event => {
+    //setSearch(event.target.value);
     //searchPosts(event.target.value);
-  };
+  //};
 
   useEffect(() => {
     fetchData({ page: 1 });
@@ -37,14 +37,6 @@ export const MoviesListPage = ( ) => {
   return (
     
     <>
-
-      <input
-        type="text"
-        className="form-control mb-4"
-        placeholder="Type to search..."
-        value={search}
-        onChange={handleSearch}
-      />
 
       {(status === STATUS.loading || status === STATUS.idle) && <MovieLoader />}
 

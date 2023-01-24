@@ -18,7 +18,7 @@ const StyledLink = styled(NavLink)`
 export const App = () => {
   return (
     
-    <BrowserRouter>
+    <BrowserRouter basename='goit-react-hw-05-movies' >
       <>
         <Header title={'Vieo cloud'}/>
         

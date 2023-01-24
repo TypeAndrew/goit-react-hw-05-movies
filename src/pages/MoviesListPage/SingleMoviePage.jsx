@@ -1,11 +1,12 @@
 import { useEffect, useState,  } from 'react';
 import { useLocation } from "react-router-dom";
-import axios from 'axios';
+import { STATUS } from '../../constants/status.constants';
 import { useParams, Link, Outlet } from 'react-router-dom';
-import { toast } from 'react-toastify';
+
 import { Genres } from '../../components/Movies/Genres'
 import { BackLink } from '../../components/Movies/BackLink';
 import { Loader } from '../../components/Loader/Loader';
+import { getDeteilsMovie } from '../../services/movies.services';
 
 export const SingleMoviePage = () => {
   // TODO change to dynamic value
@@ -13,23 +14,36 @@ export const SingleMoviePage = () => {
   const { movieId } = useParams();
  
   const [movie, setMovie] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [status, setStatus] = useState(STATUS.idle);
 
   const location = useLocation();
   const backLinkHref = location.state?.from ?? "/products";
+
   useEffect(() => {
-    setIsLoading(true);
+    
 
     // TODO create service
-    axios.get('https://api.themoviedb.org/3/movie/' + movieId+'?api_key=c491b5b8e2b4a9ab13619b0a91f8bb41')
+    /*axios.get('https://api.themoviedb.org/3/movie/' + movieId+'?api_key=c491b5b8e2b4a9ab13619b0a91f8bb41')
       .then(({ data }) => setMovie(data))
       .catch(() => {
         toast.error('Something went wrong!');
       })
-      .finally(() => setIsLoading(false));
+      .finally(() => setIsLoading(false));*/
+      const fetchData = async () => {
+        setStatus(STATUS.loading);
+        try {
+          const data = await getDeteilsMovie(movieId,'','/movie/');
+          setMovie(data);
+          setStatus(STATUS.success);
+        } catch (error) {
+          console.log(error);
+          setStatus(STATUS.error);
+        }
+      };
+      fetchData();
   }, [movieId]);
 
-  if (isLoading) {
+  if (status === STATUS.loading) {
     return <Loader />;
   }
 
