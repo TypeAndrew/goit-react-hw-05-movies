@@ -1,8 +1,5 @@
 export const ReviewsItem = ({ element }) => {
 
-  //const { movieId } = useParams();
-
-
     return (
        
       <li>

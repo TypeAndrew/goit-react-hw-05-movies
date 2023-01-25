@@ -7,8 +7,8 @@ const APIparam = {
 
 const postsApi = axios.create(APIparam);
 
-export const getMovies = async(movieId = '', query, search) => {
-    const { data } = await postsApi.get(search + '?' + APIparam.api_key, {
+export const getMovies = async( ) => {
+    const { data } = await postsApi.get('/movie/popular/?' + APIparam.api_key, {
         params: {
             api_key: postsApi.api_key,
 
@@ -18,8 +18,8 @@ export const getMovies = async(movieId = '', query, search) => {
     return data;
 };
 
-export const getDeteilsMovie = async(movieId, query, search) => {
-    const { data } = await postsApi.get(search + movieId + '?' + APIparam.api_key, {
+export const getDeteilsMovie = async(movieId) => {
+    const { data } = await postsApi.get('/movie/' + movieId + '?' + APIparam.api_key, {
         params: {
             api_key: postsApi.api_key,
 
@@ -29,8 +29,8 @@ export const getDeteilsMovie = async(movieId, query, search) => {
     return data;
 };
 
-export const getCasts = async(movieId, query, search) => {
-    const { data } = await postsApi.get('/movie/' + movieId + search + '?' + APIparam.api_key, {
+export const getCasts = async(movieId) => {
+    const { data } = await postsApi.get('/movie/' + movieId + '/credits?' + APIparam.api_key, {
         params: {
             api_key: postsApi.api_key,
 
@@ -41,8 +41,20 @@ export const getCasts = async(movieId, query, search) => {
 
 }
 
-export const searhMoviesByName = async(movieId = '', query, search) => {
-    const { data } = await postsApi.get(search + '?' + APIparam.api_key + '&query=' + query, {
+export const getRewievs = async(movieId) => {
+    const { data } = await postsApi.get('/movie/' + movieId+'/reviews?' + APIparam.api_key, {
+        params: {
+            api_key: postsApi.api_key,
+
+        },
+    });
+
+    return data;
+
+}
+
+export const searhMoviesByName = async( query) => {
+    const { data } = await postsApi.get('/search/movie/?' + APIparam.api_key + '&query=' + query, {
         params: {
             api_key: postsApi.api_key,
 

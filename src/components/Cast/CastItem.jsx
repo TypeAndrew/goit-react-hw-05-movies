@@ -1,8 +1,5 @@
 export const CastItem = ({ element }) => {
 
-  //const { movieId } = useParams();
-
-
     return (
        
       <li>

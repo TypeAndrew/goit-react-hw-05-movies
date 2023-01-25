@@ -3,8 +3,8 @@ import { useLocation } from "react-router-dom";
 import { STATUS } from '../../constants/status.constants';
 import { useParams, Link, Outlet } from 'react-router-dom';
 
-import { Genres } from '../../components/Movies/Genres'
-import { BackLink } from '../../components/Movies/BackLink';
+import { Genres } from '../../components/Genres/Genres'
+import { BackLink } from '../../components/BackLink/BackLink';
 import { Loader } from '../../components/Loader/Loader';
 import { getDeteilsMovie } from '../../services/movies.services';
 
@@ -21,18 +21,10 @@ export const SingleMoviePage = () => {
 
   useEffect(() => {
     
-
-    // TODO create service
-    /*axios.get('https://api.themoviedb.org/3/movie/' + movieId+'?api_key=c491b5b8e2b4a9ab13619b0a91f8bb41')
-      .then(({ data }) => setMovie(data))
-      .catch(() => {
-        toast.error('Something went wrong!');
-      })
-      .finally(() => setIsLoading(false));*/
       const fetchData = async () => {
         setStatus(STATUS.loading);
         try {
-          const data = await getDeteilsMovie(movieId,'','/movie/');
+          const data = await getDeteilsMovie(movieId);
           setMovie(data);
           setStatus(STATUS.success);
         } catch (error) {
@@ -47,8 +39,7 @@ export const SingleMoviePage = () => {
     return <Loader />;
   }
 
-  
-  return (
+   return (
     movie && (
       <>
         <BackLink to={backLinkHref}>Back</BackLink>

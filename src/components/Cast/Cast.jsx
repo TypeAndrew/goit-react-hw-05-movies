@@ -1,13 +1,11 @@
 import {  useState } from 'react';
 import { CastItem } from './CastItem';
-//import axios from 'axios';
 import { useEffect } from 'react';
-//import { toast } from 'react-toastify';
 import { getCasts } from '../../services/movies.services';
-import { Loader } from '../../components/Loader/Loader';
+import { Loader } from '../Loader/Loader';
 import { STATUS } from '../../constants/status.constants';
 import { useParams } from 'react-router-dom';
-//import { useLocation } from "react-router-dom";
+
 
 export const Cast = () => {
 
@@ -15,17 +13,15 @@ export const Cast = () => {
 
   const [value, setValue] = useState(null);
   const [status, setStatus] = useState(STATUS.idle);
-  //const location = useLocation();
- // const backLinkHref = location.state?.from ;
+
   
 
    useEffect(() => {
     
-    //setIsLoading(true);
     const fetchData = async () => {
       setStatus(STATUS.loading);
       try {
-        const data = await getCasts(movieId,'','/credits');
+        const data = await getCasts(movieId);
         setValue(data);
         setStatus(STATUS.success);
       } catch (error) {
@@ -34,13 +30,6 @@ export const Cast = () => {
       }
     }; 
     fetchData();
-    // TODO create service
-    /*axios.get('https://api.themoviedb.org/3/movie/' + movieId+'/credits?api_key=c491b5b8e2b4a9ab13619b0a91f8bb41')
-      .then(({ data }) => setValue(data))
-      .catch(() => {
-        toast.error('Something went wrong!');
-      })
-      .finally(() => setIsLoading(false));*/
       
   }, [movieId]);
   
@@ -48,7 +37,6 @@ export const Cast = () => {
     return <Loader />;
   }
  
-
   return (
       <>
         <ul  >

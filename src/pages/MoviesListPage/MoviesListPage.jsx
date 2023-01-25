@@ -9,12 +9,11 @@ import { getMovies } from '../../services/movies.services';
 export const MoviesListPage = ( ) => {
   const [movies, setMovies] = useState(null);
   const [status, setStatus] = useState(STATUS.idle);
-  //const [search, setSearch] = useState('');
   
-  const fetchData = async ({ page = 1, query = '' }) => {
+  const fetchData = async () => {
     setStatus(STATUS.loading);
     try {
-      const data = await getMovies('',query,'/movie/popular/');
+      const data = await getMovies();
       setMovies(data);
       setStatus(STATUS.success);
     } catch (error) {
@@ -23,10 +22,6 @@ export const MoviesListPage = ( ) => {
     }
   };
 
-  //const handleSearch = event => {
-    //setSearch(event.target.value);
-    //searchPosts(event.target.value);
-  //};
 
   useEffect(() => {
     fetchData({ page: 1 });

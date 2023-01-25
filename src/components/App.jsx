@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 import styled from "styled-components";
 import { Header } from './Header/Header';
-import { SearchMovies } from '../pages/MoviesListPage/SearchMovies';
+import { SearchMovies } from '../pages/SearchMovies/SearchMovies';
 import { MoviesListPage } from '../pages/MoviesListPage/MoviesListPage';
-import { SingleMoviePage } from '../pages/MoviesListPage/SingleMoviePage' ;
+import { SingleMoviePage } from '../pages/SingleMoviePage/SingleMoviePage' ;
 
-import { Reviews } from './Movies/Reviews'
-import { Cast } from './Movies/Cast'
+import { Reviews } from './Reviews/Reviews'
+import { Cast } from './Cast/Cast'
 const StyledLink = styled(NavLink)`
   color: blue;
 
