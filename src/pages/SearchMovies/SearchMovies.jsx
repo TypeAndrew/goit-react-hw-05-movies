@@ -1,13 +1,19 @@
 import { useSearchParams } from "react-router-dom";
 import {  useState, useEffect } from 'react';
-import { MovieItem } from '../../components/Movies/MovieItem';
+import { lazy } from "react";
+import { searhMoviesByName } from '../../services/searhMoviesByName.service';
 import { STATUS } from '../../constants/status.constants';
-import { searhMoviesByName } from '../../services/movies.services';
-import { Loader } from '../../components/Loader/Loader';
 
-export const SearchMovies = () => {
+const MovieItem = lazy(() => import("../../components/Movies/MovieItem"));
+const Loader = lazy(() => import("../../components/Loader/Loader"));
+//const searhMoviesByName = lazy(() => import("../../services/searhMoviesByName.service"));
+//const STATUS = lazy(() => import("../../constants/status.constants"));
+//import { MovieItem } from '../../components/Movies/MovieItem';
+//import { Loader } from '../../components/Loader/Loader';
+
+const SearchMovies = () => {
   const [video, setViedos] = useState(undefined);
-  //const [value, setValue] = useState('');
+  const [value, setValue] = useState('');
   const [status, setStatus] = useState(STATUS.idle);
  // const search = useRef(); 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -26,21 +32,25 @@ export const SearchMovies = () => {
       setStatus(STATUS.error);
     }
     };
-    fetchData();
+  
+    if (query !== null) {
+      fetchData();
+      }
     },[query])
  
 
    
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    const { value } = event.target[0];
+
     setSearchParams({ query: value })
   };  
 
    const handleChange = event => {
     const { value } = event.target;
-    setSearchParams({ query: value })
+    setValue(value);
+ 
  
 
    };
@@ -57,13 +67,13 @@ export const SearchMovies = () => {
         onSubmit={handleSubmit}
       >
         <input
-          type="text"
+          type="text"y
           className="form-control"
          placeholder="search..."
          
-         value={query == null ? '' : query}
+         value={value == null ? '' : value}
          onChange={handleChange}  
-         //ref={search1}
+
            />
 
         <button type="submit" className="btn btn-primary">
@@ -82,3 +92,5 @@ export const SearchMovies = () => {
 
     )
 }
+
+export default SearchMovies;

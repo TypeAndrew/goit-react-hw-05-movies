@@ -1,4 +1,4 @@
-export const ReviewsItem = ({ element }) => {
+const ReviewsItem = ({ element }) => {
 
     return (
        
@@ -13,3 +13,4 @@ export const ReviewsItem = ({ element }) => {
 
 }
 
+export default ReviewsItem;

@@ -1,12 +1,20 @@
 import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 import styled from "styled-components";
-import { Header } from './Header/Header';
-import { SearchMovies } from '../pages/SearchMovies/SearchMovies';
-import { MoviesListPage } from '../pages/MoviesListPage/MoviesListPage';
-import { SingleMoviePage } from '../pages/SingleMoviePage/SingleMoviePage' ;
+import { lazy, Suspense } from "react";
+//import { MoviesListPage } from '../pages/MoviesListPage/MoviesListPage';
+//import { SearchMovies } from '../pages/SearchMovies/SearchMovies';
+//import { SingleMoviePage } from '../pages/SingleMoviePage/SingleMoviePage' ;
+//import { Header } from './Header/Header';
+//import { Reviews } from './Reviews/Reviews'
+//import { Cast } from './Cast/Cast'
 
-import { Reviews } from './Reviews/Reviews'
-import { Cast } from './Cast/Cast'
+const MoviesListPage = lazy(() => import("../pages/MoviesListPage/MoviesListPage"));
+const SearchMovies = lazy(() => import("../pages/SearchMovies/SearchMovies"));
+const SingleMoviePage = lazy(() => import("../pages/SingleMoviePage/SingleMoviePage"));
+const Header = lazy(() => import("./Header/Header"));
+const Reviews = lazy(() => import("./Reviews/Reviews"));
+const Cast = lazy(() => import("./Cast/Cast"));
+
 const StyledLink = styled(NavLink)`
   color: blue;
 
@@ -20,6 +28,7 @@ export const App = () => {
     
     <BrowserRouter basename='goit-react-hw-05-movies' >
       <>
+        <Suspense fallback={<div>Loading...</div>}>
         <Header title={'Video cloud'}/>
         
         <nav>
@@ -39,7 +48,7 @@ export const App = () => {
               
           </Route>
         </Routes> 
-           
+        </Suspense>   
     </>
     </BrowserRouter>
   );

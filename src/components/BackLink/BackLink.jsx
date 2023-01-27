@@ -17,7 +17,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-export const BackLink = ({ to, children }) => {
+const BackLink = ({ to, children }) => {
   return (
     <StyledLink to={to}>
      
@@ -25,3 +25,5 @@ export const BackLink = ({ to, children }) => {
     </StyledLink>
   );
 };
+
+export default BackLink;

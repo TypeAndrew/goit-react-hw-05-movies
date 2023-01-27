@@ -1,13 +1,17 @@
-import {  useState } from 'react';
-import { CastItem } from './CastItem';
-import { useEffect } from 'react';
-import { getCasts } from '../../services/movies.services';
-import { Loader } from '../Loader/Loader';
-import { STATUS } from '../../constants/status.constants';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { lazy } from "react";
+import { STATUS } from '../../constants/status.constants';
+//import { CastItem } from './CastItem';
+import { getCasts } from '../../services/getCasts.service';
 
+//import { Loader } from '../Loader/Loader';
+//const getCasts = lazy(() => import("../../services/getCasts.service"));
+//const STATUS = lazy(() => import("../../constants/status.constants"));
+const Loader = lazy(() => import("../Loader/Loader"));
+const CastItem = lazy(() => import("./CastItem"));
 
-export const Cast = () => {
+const Cast = () => {
 
   const { movieId } = useParams();
 
@@ -49,3 +53,4 @@ export const Cast = () => {
 
 }
 
+export default Cast;

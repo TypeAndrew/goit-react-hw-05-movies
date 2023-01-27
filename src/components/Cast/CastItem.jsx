@@ -1,4 +1,4 @@
-export const CastItem = ({ element }) => {
+const CastItem = ({ element }) => {
 
     return (
        
@@ -14,3 +14,4 @@ export const CastItem = ({ element }) => {
 
 }
 
+export default CastItem;

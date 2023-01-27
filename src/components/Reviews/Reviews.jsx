@@ -1,14 +1,16 @@
-import { useState } from 'react';
-import { ReviewsItem } from './ReviewsItem';
-import { useEffect } from 'react';
-import { getRewievs } from '../../services/movies.services';
-import { STATUS } from '../../constants/status.constants';
-import { Loader } from '../Loader/Loader';
-
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { lazy } from "react";
+//import { ReviewsItem } from './ReviewsItem';
+import { getRewievs } from '../../services/getRewievs.service';
+import { STATUS } from '../../constants/status.constants';
+//import { Loader } from '../Loader/Loader';
+const ReviewsItem = lazy(() => import("./ReviewsItem"));
+const Loader = lazy(() => import("../Loader/Loader"));
+//const getRewievs = lazy(() => import("../../services/getRewievs.service"));
+//const STATUS = lazy(() => import("../../constants/status.constants"));
 
-
-export const Reviews = () => {
+const Reviews = () => {
 
   const { movieId } = useParams();
   const [status, setStatus] = useState(STATUS.idle);
@@ -48,3 +50,5 @@ export const Reviews = () => {
     )
 
 }
+
+export default Reviews;

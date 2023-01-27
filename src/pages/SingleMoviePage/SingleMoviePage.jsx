@@ -2,13 +2,18 @@ import { useEffect, useState,  } from 'react';
 import { useLocation } from "react-router-dom";
 import { STATUS } from '../../constants/status.constants';
 import { useParams, Link, Outlet } from 'react-router-dom';
+import { lazy } from "react";
+import { getDetailsMovie } from '../../services/getDetailsMovie';
+//import { Genres } from '../../components/Genres/Genres'
+//import { BackLink } from '../../components/BackLink/BackLink';
+//import { Loader } from '../../components/Loader/Loader';
 
-import { Genres } from '../../components/Genres/Genres'
-import { BackLink } from '../../components/BackLink/BackLink';
-import { Loader } from '../../components/Loader/Loader';
-import { getDeteilsMovie } from '../../services/movies.services';
+const Genres = lazy(() => import("../../components/Genres/Genres"));
+const BackLink = lazy(() => import("../../components/BackLink/BackLink"));
+//const getDetailsMovie = lazy(() => import("../../services/getDetailsMovie"));
+const Loader = lazy(() => import("../../components/Loader/Loader"));
 
-export const SingleMoviePage = () => {
+const SingleMoviePage = () => {
   // TODO change to dynamic value
 
   const { movieId } = useParams();
@@ -24,7 +29,7 @@ export const SingleMoviePage = () => {
       const fetchData = async () => {
         setStatus(STATUS.loading);
         try {
-          const data = await getDeteilsMovie(movieId);
+          const data = await getDetailsMovie(movieId);
           setMovie(data);
           setStatus(STATUS.success);
         } catch (error) {
@@ -79,5 +84,5 @@ export const SingleMoviePage = () => {
   );
 };
 
-
+export default SingleMoviePage;
  

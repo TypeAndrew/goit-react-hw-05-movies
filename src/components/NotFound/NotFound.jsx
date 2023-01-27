@@ -1,6 +1,6 @@
 import image from './error-404-page.jpg';
 
-export const NotFound = () => {
+ const NotFound = () => {
   return (
     <div className="d-flex flex-column justify-content-center align-items-center">
       <img src={image} alt="not found" style={{ width: 300 }} />
@@ -8,3 +8,5 @@ export const NotFound = () => {
     </div>
   );
 };
+
+export default NotFound;

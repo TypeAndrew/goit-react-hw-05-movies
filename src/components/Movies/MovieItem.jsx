@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 
 
-export const MovieItem = ({ movie , path, search}) => {
+const MovieItem = ({ movie , path, search}) => {
 
   return (
     <div className="col-12 col-md-6 col-xxl-4 mb-4">
@@ -22,3 +22,5 @@ export const MovieItem = ({ movie , path, search}) => {
     </div>
   );
 };
+
+export default MovieItem;

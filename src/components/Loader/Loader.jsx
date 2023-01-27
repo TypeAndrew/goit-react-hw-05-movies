@@ -1,5 +1,4 @@
-
-export const Loader = () => {
+const Loader = () => {
   return (
     <>
       <div className="modal-backdrop fade show" />
@@ -14,3 +13,5 @@ export const Loader = () => {
     </>
   );
 };
+
+export default Loader;

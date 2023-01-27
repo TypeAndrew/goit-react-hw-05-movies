@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const Genres = ({ data }) => {
+const Genres = ({ data }) => {
 
      const [value, setValue] = useState("");
 
@@ -21,3 +21,5 @@ export const Genres = ({ data }) => {
     )
 
 }
+
+export default Genres;

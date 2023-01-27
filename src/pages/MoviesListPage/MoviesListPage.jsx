@@ -1,12 +1,21 @@
 import { useEffect, useState } from 'react';
-
-import { NotFound } from '../../components/NotFound/NotFound';
-import { MovieItem } from '../../components/Movies/MovieItem';
-import { MovieLoader } from '../../components/Movies/MovieLoader';
+import { lazy } from "react";
+import { getMovies } from '../../services/getMovies.service';
 import { STATUS } from '../../constants/status.constants';
-import { getMovies } from '../../services/movies.services';
 
-export const MoviesListPage = ( ) => {
+//const STATUS = lazy(() => import("../../constants/status.constants"));
+//const getMovies = lazy(() => import("../../services/getMovies.service"));
+const MovieItem = lazy(() => import("../../components/Movies/MovieItem"));
+const MovieLoader = lazy(() => import("../../components/Movies/MovieLoader"));
+const NotFound = lazy(() => import("../../components/NotFound/NotFound"));
+
+//import { NotFound } from '../../components/NotFound/NotFound';
+//import { MovieItem } from '../../components/Movies/MovieItem';
+//import { MovieLoader } from '../../components/Movies/MovieLoader';
+
+
+
+const MoviesListPage = ( ) => {
   const [movies, setMovies] = useState(null);
   const [status, setStatus] = useState(STATUS.idle);
   
@@ -50,4 +59,4 @@ export const MoviesListPage = ( ) => {
   );
 };
 
-//export default MoviesListPage;
+export default MoviesListPage;

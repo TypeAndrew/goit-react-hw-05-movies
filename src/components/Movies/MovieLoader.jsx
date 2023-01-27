@@ -1,6 +1,7 @@
-import { Skeleton } from '../Skeleton/Skeleton';
-
-export const MovieLoader = ({ amount = 9 }) => {
+//import { Skeleton } from '../Skeleton/Skeleton';
+import { lazy } from "react";
+const Skeleton = lazy(() => import("../Skeleton/Skeleton"));
+const MovieLoader = ({ amount = 9 }) => {
   return (
     <div className="container-fluid g-0 pb-5 mb-5">
       <div className="row">
@@ -31,3 +32,5 @@ export const MovieLoader = ({ amount = 9 }) => {
     </div>
   );
 };
+
+export default MovieLoader;
