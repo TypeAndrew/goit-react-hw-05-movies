@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgoit_react_hw_05_movies=self.webpackChunkgoit_react_hw_05_movies||[]).push([[672],{6672:function(e,t,i){i.r(t);var a=i(184);t.default=function(e){var t=e.element;return(0,a.jsx)("li",{children:(0,a.jsx)("img",{src:"https://image.tmdb.org/t/p/original/"+t.profile_path,alt:t.name,className:"img-fluid mb-4",style:{maxHeight:"100px",maxWidth:"100px",width:"100%",objectFit:"cover"}})})}}}]);
+//# sourceMappingURL=672.af5329d1.chunk.js.map
