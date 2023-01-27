@@ -33,7 +33,7 @@ const SearchMovies = () => {
     }
     };
   
-    if (query !== null) {
+    if ((query !== null) && (query !== "undefined")) {
       fetchData();
       }
     },[query])
